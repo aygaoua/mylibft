@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 16:01:48 by azgaoua           #+#    #+#             */
-/*   Updated: 2022/11/17 15:55:27 by azgaoua          ###   ########.fr       */
+/*   Created: 2022/11/12 19:20:27 by azgaoua           #+#    #+#             */
+/*   Updated: 2022/11/18 03:42:42 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	*d;
-	char	*s;
+	unsigned int		j;
 
-	d = (char *)dst;
-	s = (char *)src;
-	if (d == 0 && s == 0)
-		return (0);
-	if (s < d)
+	if (!s || !f)
+		return ;
+	j = 0;
+	while (j < ft_strlen(s))
 	{
-		while (len--)
-			d[len] = s[len];
+		f(j, &s[j]);
+		j++;
 	}
-	else
-		d = ft_memcpy(d, s, len);
-	return (d);
+}
+
+void	f(unsigned int k, char *g)
+{
+	k = 0;
+	*g -= 32;
+}
+int		main()
+{
+	char tab[] = "bibabrotha";
+
+	ft_striteri(tab, &f);
+	printf("%s", tab);
 }

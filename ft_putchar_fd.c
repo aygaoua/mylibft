@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 16:01:48 by azgaoua           #+#    #+#             */
-/*   Updated: 2022/11/17 15:55:27 by azgaoua          ###   ########.fr       */
+/*   Created: 2022/11/12 19:38:48 by azgaoua           #+#    #+#             */
+/*   Updated: 2022/11/18 17:06:56 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	*d;
-	char	*s;
-
-	d = (char *)dst;
-	s = (char *)src;
-	if (d == 0 && s == 0)
-		return (0);
-	if (s < d)
-	{
-		while (len--)
-			d[len] = s[len];
-	}
-	else
-		d = ft_memcpy(d, s, len);
-	return (d);
+	write(fd, &c, 1);
 }
+// #include <fcntl.h>
+// int main()
+// {
+// 	int fd = creat("bi.txt", 0777);
+// 	ft_putchar_fd('h', fd);
+// }

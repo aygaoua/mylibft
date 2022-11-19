@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azgaoua <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: azgaoua <azgaoua@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:54:22 by azgaoua           #+#    #+#             */
-/*   Updated: 2022/10/25 00:58:13 by azgaoua          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:46:28 by azgaoua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_atoi(const char *str)
@@ -31,9 +32,9 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
 	{
 		retu = (retu * 10) + str[i] - 48;
-		if (retu * s > 2147483647)
+		if (retu * s > 4294967295)
 			return (-1);
-		else if (retu * s < -2147483648)
+		else if (retu * s < -4294967296)
 			return (0);
 		i++;
 	}
